@@ -1,20 +1,53 @@
 import React from "react";
 import "./styles.desktop.css";
 import { Button, Input, InputPassword } from "./common/styled-components";
+import { useFormBundle } from "./common/hooks";
+import { SCRIPTS } from "./common/scripts";
 
 export const RegisterDesktopComponent: React.FunctionComponent = () => {
+    const [form, {request, onChange, onSubmit}] = useFormBundle<{token:string}>()
+
     return (
             <div id="register-content">
                 <header id="register-header">
-                    <h1>Register</h1>
-                    <p>TaskFlow: A Collaborative Task Management System</p>
+                    <h1>{SCRIPTS.title}</h1>
+                    <p>{SCRIPTS.subTitle}</p>
                 </header>
                 <main id="register-main">
-                    <Input placeholder="Username"/>
-                    <Input placeholder="Email"/>
-                    <InputPassword placeholder="Password"/>
-                    <InputPassword placeholder="Confirm Password"/>
-                    <Button type="primary">Submit</Button>
+                    <form onSubmit={(event) => onSubmit(event, async (form) => {
+                        return await new Promise((resolve) => {
+                            setTimeout(() => {
+                                resolve({token:''});
+                            },3000);
+                        }) 
+
+                    })} id="register-form">
+                        <Input 
+                            name='username'
+                            value={form.username} 
+                            onChange={onChange} 
+                            placeholder="Username"
+                        />
+                        <Input 
+                            name='email'
+                            onChange={onChange} 
+                            value={form.email} 
+                            placeholder="Email"
+                        />
+                        <InputPassword 
+                            name='password'
+                            onChange={onChange} 
+                            value={form.password} 
+                            placeholder="Password"
+                        />
+                        <InputPassword 
+                            name='confirmPassword'
+                            onChange={onChange} 
+                            value={form.confirmPassword} 
+                            placeholder="Confirm Password"
+                        />
+                        <Button htmlType="submit" loading={request.loading} type="primary">{SCRIPTS.submit}</Button>
+                    </form>
                 </main>
             </div>
     )
