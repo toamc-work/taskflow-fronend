@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/taskflow-fronend/static/css/main.073c9b0a.css",
+    "main.js": "/taskflow-fronend/static/js/main.57ab5ff7.js",
+    "static/js/787.36645058.chunk.js": "/taskflow-fronend/static/js/787.36645058.chunk.js",
+    "static/media/logo.svg": "/taskflow-fronend/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/taskflow-fronend/index.html",
+    "main.073c9b0a.css.map": "/taskflow-fronend/static/css/main.073c9b0a.css.map",
+    "main.57ab5ff7.js.map": "/taskflow-fronend/static/js/main.57ab5ff7.js.map",
+    "787.36645058.chunk.js.map": "/taskflow-fronend/static/js/787.36645058.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.57ab5ff7.js"
+  ]
+}
