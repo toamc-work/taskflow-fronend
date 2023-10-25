@@ -1,7 +1,7 @@
 /* Medium Laptops and Desktops */
 @media (min-width:1024px) {
-    #register-content {
-        /* Register Form */
+    #login-content {
+        /* login Form */
         background: #FFFFFF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 22px;
@@ -14,8 +14,8 @@
         grid-auto-rows: auto
     }
     
-    #register-header h1 {
-        /* Register Title*/
+    #login-header h1 {
+        /* login Title*/
     
         font-family: 'Inter';
         font-style: normal;
@@ -29,7 +29,7 @@
         padding: 0;
     }
     
-    #register-header p {
+    #login-header p {
         /* TaskFlow: A Collaborative Task Management System */
     
         font-family: 'Inter';
@@ -44,18 +44,18 @@
         padding: 0;
     }
     
-    #register-main {
+    #login-main {
         display: grid;
         align-items: start;
     }
     
-    #register-form {
+    #login-form {
         display: grid;
         place-items: center center;
         gap: 1.2rem;
     }
     
-    #register-form > div{
+    #login-form > div{
         margin: auto;
         min-width: 90%;
         max-width: 90%;
@@ -63,21 +63,21 @@
         text-wrap: wrap;
     }
     
-    #register-form input, span{
+    #login-form input, span{
         font-size: 22px;
     }
     
-    #register-main button{
+    #login-main button{
         font-size: 22px;
         width: 40%;
         height: 50px;
     }
     
-    #register-footer {
+    #login-footer {
         text-align: center;
     }
-    #register-footer a{
-        /* Already Registered */
+    #login-footer a{
+        /* Already logined */
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;

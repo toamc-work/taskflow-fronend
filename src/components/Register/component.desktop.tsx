@@ -1,11 +1,16 @@
 import React from "react";
 import "./styles.desktop.css";
-import { Button, Input, InputPassword } from "./common/styled-components";
+import { Button, Form, Input, InputPassword } from "./common/styled-components";
 import { useFormBundle } from "./common/hooks";
 import { SCRIPTS } from "./common/scripts";
+import { Api } from "../../Api";
+import { Link, Navigate } from "react-router-dom";
+import { Skeleton } from "antd";
 
 export const RegisterDesktopComponent: React.FunctionComponent = () => {
-    const [form, {request, onChange, onSubmit}] = useFormBundle<{token:string}>()
+    const [form, {request, rules, onChange, onSubmit}] = useFormBundle<{message:string, code:number}>()
+    console.log(request.payload);
+    if(request.payload?.code === 200) return <Navigate to={'/signin'}/>;
 
     return (
             <div id="register-content">
@@ -14,41 +19,66 @@ export const RegisterDesktopComponent: React.FunctionComponent = () => {
                     <p>{SCRIPTS.subTitle}</p>
                 </header>
                 <main id="register-main">
-                    <form onSubmit={(event) => onSubmit(event, async (form) => {
-                        return await new Promise((resolve) => {
-                            setTimeout(() => {
-                                resolve({token:''});
-                            },3000);
-                        }) 
+                    <Form 
+                        onFinish={() => onSubmit(new Api().preformRegistration)} 
+                        validateTrigger='onSubmit'
+                        initialValues={{
+                            remember:false
+                        }}  
+                        id="register-form"
+                    >
+                        <Form.Item
+                            name={'username'}
+                            rules={rules.username}
+                        >
+                            <Input 
+                                name='username'
+                                value={form.username} 
+                                onChange={onChange} 
+                                placeholder="Username"
+                            />
+                        </Form.Item>
 
-                    })} id="register-form">
-                        <Input 
-                            name='username'
-                            value={form.username} 
-                            onChange={onChange} 
-                            placeholder="Username"
-                        />
-                        <Input 
-                            name='email'
-                            onChange={onChange} 
-                            value={form.email} 
-                            placeholder="Email"
-                        />
-                        <InputPassword 
-                            name='password'
-                            onChange={onChange} 
-                            value={form.password} 
-                            placeholder="Password"
-                        />
-                        <InputPassword 
-                            name='confirmPassword'
-                            onChange={onChange} 
-                            value={form.confirmPassword} 
-                            placeholder="Confirm Password"
-                        />
+                        <Form.Item
+                            name={'email'}
+                            rules={rules.email}
+                        >
+                            <Input 
+                                name='email'
+                                onChange={onChange} 
+                                value={form.email} 
+                                placeholder="Email"
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name={'password'}
+                            rules={rules.password}
+                        >
+
+                            <InputPassword 
+                                name='password'
+                                onChange={onChange} 
+                                value={form.password} 
+                                placeholder="Password"
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name={'confirmPassword'}
+                            rules={rules.confirmPassword}
+                        >
+                            <InputPassword 
+                                name='confirmPassword'
+                                onChange={onChange} 
+                                value={form.confirmPassword} 
+                                placeholder="Confirm Password"
+                            />
+                        </Form.Item>
                         <Button htmlType="submit" loading={request.loading} type="primary">{SCRIPTS.submit}</Button>
-                    </form>
+                    </Form>
                 </main>
+                <footer id="register-footer">
+                    <Link to={"/signin"}>{SCRIPTS.link}</Link>
+                </footer>
             </div>
     )
 };

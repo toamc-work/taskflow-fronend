@@ -1,6 +1,6 @@
 export const SCRIPTS:{[key:string]:string} = {
-    title: 'Register',
+    title: 'Login',
     subTitle: 'TaskFlow: A Collaborative Task Management System',
-    submit: 'submit',
-    link:'Already Registered',
+    submit: 'login',
+    link:'Not Registered?',
 }

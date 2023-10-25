@@ -1,43 +1,30 @@
 import React from "react";
-import "./styles.tablet.css";
+import "./styles.desktop.css";
 import { Button, Form, Input, InputPassword } from "./common/styled-components";
 import { useFormBundle } from "./common/hooks";
 import { SCRIPTS } from "./common/scripts";
 import { Api } from "../../Api";
 import { Link, Navigate } from "react-router-dom";
+import { Skeleton } from "antd";
 
-export const RegisterTabletComponent: React.FunctionComponent = () => {
+export const LoginDesktopComponent: React.FunctionComponent = () => {
     const [form, {request, rules, onChange, onSubmit}] = useFormBundle<{message:string, code:number}>()
 
-    if(request.payload?.code === 200) return <Navigate to={'/signin'}/>;
-
     return (
-            <div id="register-content">
-                <header id="register-header">
+            <div id="login-content">
+                <header id="login-header">
                     <h1>{SCRIPTS.title}</h1>
                     <p>{SCRIPTS.subTitle}</p>
                 </header>
-                <main id="register-main">
+                <main id="login-main">
                     <Form 
-                        onFinish={() => onSubmit(new Api().preformRegistration)} 
+                        onFinish={() => onSubmit(new Api().preformLogin)}
                         validateTrigger='onSubmit'
                         initialValues={{
                             remember:false
                         }}  
-                        id="register-form"
+                        id="login-form"
                     >
-                        <Form.Item
-                            name={'username'}
-                            rules={rules.username}
-                        >
-                            <Input 
-                                name='username'
-                                value={form.username} 
-                                onChange={onChange} 
-                                placeholder="Username"
-                            />
-                        </Form.Item>
-
                         <Form.Item
                             name={'email'}
                             rules={rules.email}
@@ -61,22 +48,11 @@ export const RegisterTabletComponent: React.FunctionComponent = () => {
                                 placeholder="Password"
                             />
                         </Form.Item>
-                        <Form.Item
-                            name={'confirmPassword'}
-                            rules={rules.confirmPassword}
-                        >
-                            <InputPassword 
-                                name='confirmPassword'
-                                onChange={onChange} 
-                                value={form.confirmPassword} 
-                                placeholder="Confirm Password"
-                            />
-                        </Form.Item>
                         <Button htmlType="submit" loading={request.loading} type="primary">{SCRIPTS.submit}</Button>
                     </Form>
                 </main>
-                <footer id="register-footer">
-                    <Link to={"/signin"}>{SCRIPTS.link}</Link>
+                <footer id="login-footer">
+                    <Link to={"/signup"}>{SCRIPTS.link}</Link>
                 </footer>
             </div>
     )

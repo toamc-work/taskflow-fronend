@@ -4,10 +4,8 @@ import { RuleObject } from "antd/es/form";
 
 export const useFormBundle = <Payload>():IUseFormBundleResponse<Payload> => {
     const [state, setState] = useState<InitialFormState>({
-        username: '',
         email: '',
         password: '',
-        confirmPassword: '',
     });
 
     const [request, setRequest] = useState<RequestState<Payload>>({
@@ -25,7 +23,7 @@ export const useFormBundle = <Payload>():IUseFormBundleResponse<Payload> => {
         });
     };
     
-    const makeRequest = async (callback: ({username, email, password, confirmPassword}:InitialFormState) => Promise<Payload>): Promise<void> => {
+    const makeRequest = async (callback: ({email, password}:InitialFormState) => Promise<Payload>): Promise<void> => {
         try
         {
             setRequest((prevState) => {
@@ -54,7 +52,7 @@ export const useFormBundle = <Payload>():IUseFormBundleResponse<Payload> => {
         }
     }
 
-    const onSubmit = (callback: ({username, email, password, confirmPassword}:InitialFormState) => Promise<Payload>): void => {
+    const onSubmit = (callback: ({email, password}:InitialFormState) => Promise<Payload>): void => {
         try
         {
             makeRequest(callback)

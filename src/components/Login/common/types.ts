@@ -1,10 +1,8 @@
 import { RuleObject } from "antd/es/form";
 
 export interface InitialFormState {
-	username: string;
 	email: string;
 	password: string;
-	confirmPassword: string;
 }
 
 export interface RequestState<Payload> {
@@ -19,6 +17,6 @@ export type IUseFormBundleResponse<Payload> = [
         request: RequestState<Payload>,
 		rules: {[key:string]:RuleObject[]}
         onChange:(event:React.ChangeEvent<HTMLInputElement>) => void,
-        onSubmit:(callback: ({username, email, password, confirmPassword}:InitialFormState) => Promise<Payload>) => void
+        onSubmit:(callback: ({email, password}:InitialFormState) => Promise<Payload>) => void
     }
 ]
