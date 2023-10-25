@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/taskflow-fronend/static/css/main.74f8a67f.css",
-    "main.js": "/taskflow-fronend/static/js/main.1b8fd7f3.js",
+    "main.js": "/taskflow-fronend/static/js/main.d3fb1d15.js",
     "static/js/787.36645058.chunk.js": "/taskflow-fronend/static/js/787.36645058.chunk.js",
     "index.html": "/taskflow-fronend/index.html",
     "main.74f8a67f.css.map": "/taskflow-fronend/static/css/main.74f8a67f.css.map",
-    "main.1b8fd7f3.js.map": "/taskflow-fronend/static/js/main.1b8fd7f3.js.map",
+    "main.d3fb1d15.js.map": "/taskflow-fronend/static/js/main.d3fb1d15.js.map",
     "787.36645058.chunk.js.map": "/taskflow-fronend/static/js/787.36645058.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.74f8a67f.css",
-    "static/js/main.1b8fd7f3.js"
+    "static/js/main.d3fb1d15.js"
   ]
 }
